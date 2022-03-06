@@ -1,0 +1,58 @@
+<%- include('partial/header')%>
+<%- include('partial/nav')%>
+
+
+<div class="container">
+    <h2>Black/Dark Table</h2>
+    <p>The .table-dark class adds a black background to the table:</p> 
+    <div class="row">
+      <div class="col-6">
+        <h1>Users</h1>
+      </div>
+      <div class="col-6 d-flex justify-content-end">
+        <a href="/adduser" type="button" class="btn btn-primary align-self-center">add-user</a>
+      </div>
+    </div>           
+    <table class="table table-dark table-bordered">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th class="text-end">Action</th>
+        </tr>
+      </thead>
+      <%
+      if(viewdata.length >0) {%>
+      <tbody>
+          <% for(let user of viewdata){ if(user.status!=0) {%>
+        <tr>
+          <!-- <th scope="row">1</th> -->
+          <td><%=user.id; %></td>
+          <td><%=user.first_name%></td>
+          <td><%=user.last_name%></td>
+          <td><%=user.email%></td>
+          <td><%=user.phone%></td>
+          <td class="text-end">
+
+            <a href = '/delete/<%= user.id %>' type="button" class="btn btn-light btn-small"><i class ="bi bi-person-x"></i>Delete</a>
+
+            </td>
+
+
+
+          
+          
+          
+        </tr>
+    
+              </tbody> 
+                 <%} } }else{%>
+          <h1>no data found</h1>
+          <%}%>
+  </div>
+
+<%- include('partial/footer')%>
+
